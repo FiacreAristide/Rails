@@ -1,0 +1,88 @@
+<style>
+  /* Styles for the page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #t;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin: 0 0 20px;
+}
+
+p.notice {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#posts {
+  margin-top: 20px;
+}
+
+.post {
+  background-color: aqua;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.post a {
+  text-decoration: none;
+  color: #ff4005;
+  }
+
+.post a:hover {
+  text-decoration: underline;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0074d9;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+</style>
+
+<body>
+  <p class="notice"><%= notice %></p>
+
+  <div class="container">
+    <h1 style="font-Size:40px;">Posts</h1>
+
+    <div id="posts">
+      <% @posts.each do |post| %>
+        <div class="post">
+          <%= render post %>
+          <p>
+            <%= link_to "Show this post", post %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+
+    <%= link_to "New post", new_post_path, class: "button" %>
+  </div>
+</body>

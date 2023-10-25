@@ -1,0 +1,44 @@
+<style>
+  .form-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .form-error {
+    color: red;
+  }
+</style>
+
+
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div class="form-error">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-container">
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="form-container">
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="form-container">
+    <%= form.submit %>
+  </div>
+<% end %>
+
